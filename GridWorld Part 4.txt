@@ -1,26 +1,2 @@
 Do You Know? 
 Set 9 
- 
- 1. A There is no need to override this method since CrabCritter 
-    has the same behavior that it inherits from its base class Critter. 
-
- 2. The CrabCritter only eats for neighbors that are in front,to its right-front 
-    and left-front locations. 
-
- 3. The method getLocationsInDirections uses this array to 
-    determine and return locations in the directions given by the parameter,
-    an array contains the directions of the possible neighbors that this crab can eat.
- 
- 4. (4,3), (4,4), and (4,5) 
- 
- 5. Similarities: When they move, they do not turn in the direction that they are 
-                  moving. They both randomly choose their next location. 
- 
-    Differences: A crab critter will only move to its left or its right. 
-		 A critter’s possible move locations are any of its eight 
-		 adjacent neighboring locations. 
-
- 6. If loc in makeMove is equal to the crab critter’s current location, it turns instead of moving. 
- 
- 7. A crab critter inherits the processActors method which only removes actors 
-    that are not rocks and not critters. 
