@@ -17,6 +17,7 @@ public class UnboundedGrid[16]<E> extends Grid<E> {
             return null;
         return (E) grid[loc.getRow()][loc.getCol()];  
     } 
+    //O(1)
     
     // from framework
     public ArrayList<Location> getEmptyAdjacentLocations(Location loc){
@@ -97,6 +98,8 @@ public class UnboundedGrid[16]<E> extends Grid<E> {
         grid[loc.getRow()][loc.getCol()] = obj; 
         return old; 
     } 
+    //with in bound : O(1)
+    //resize: O(nlogn)
     
     public E remove (Location loc){   
         E tmp = get(loc); 
