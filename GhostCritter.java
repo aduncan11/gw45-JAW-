@@ -19,7 +19,7 @@
 3. Leave the GhostCritter in the center of the grid. It should move around normally. 
  *
  * ERRATA:
- *I added a test case - when a critter has to flee though a roack or a flower - and decided that the citter, in its fleeing frenzy, could bash through a roack and crush a flower. I also realized, after lots of runthroughs trying to figure out what was wrong, that sometimes the critter moves before the ghostCritter making the fleeing hard to observe in the gui.
+ *I added a test case - when a critter has to flee though a roack or a flower - and decided that the citter, in its fleeing frenzy, could bash through a roack and crush a flower. I also realized, after lots of runthroughs trying to figure out what was wrong, that sometimes the critter moves before the ghostCritter making the fleeing hard to observe in the gui. I also made the fleeing critters move three spaces so that their panic was more visible.
  *****************************************************************/
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
@@ -37,6 +37,7 @@ public class GhostCritter extends Critter{
 	else{
 	    for (Actor a : actors){
 		if (!((a instanceof Rock) || (a instanceof Flower) || (a instanceof GhostCritter))){
+		    System.out.println(a.getLocation());
 		    System.out.println(a.getDirection());
 		    System.out.println(this.getLocation().getDirectionToward(a.getLocation()));
 		    a.setDirection(this.getLocation().getDirectionToward(a.getLocation()));
