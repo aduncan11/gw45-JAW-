@@ -1,16 +1,18 @@
-class SparseBoundedGrid<E> extends AbstractGrid<E>
-{
-    private LinkedList<OccupantInCol>[] occupantArray; // the LL storing the grid elements
+import java.util.*;
+import java.io.*;
+import info.gridworld.grid.Location;
+
+public class SparseBoundedGrid{
+    private LinkedList<OccupantInCol>[] occupantArray; // 
     
-    public SparseBoundedGrid(int r, int c)
-	occupantArray=new LinkedList<OccupantInCol>[r];
-  {
-      
-  }
-  public int getNumRows()
-  {
+    public SparseBoundedGrid(int r, int c){
+	occupantArray=new LinkedList[r];
+    }
+ 
+  public int getNumRows() {
       return occupantArray.length;
   }
+
   public int getNumCols()
   {
       
@@ -56,36 +58,19 @@ class SparseBoundedGrid<E> extends AbstractGrid<E>
       if (obj == null)
 	  throw new NullPointerException("obj == null");
       // Add the object to the grid.
-      E oldOccupant = get(loc); 
+      OccupantInCol oldOccupant = get(loc); 
       occupantArray[loc.getRow()].add(obj, loc.getCol()); 
       remove(oldOccupant);
       return oldOccupant;
   }
   
-  public E remove(Location loc)
+  public OccupantInCol remove(Location loc)
   {
       if (!isValid(loc))
 	  throw new IllegalArgumentException("Location " + loc + " is not valid");
       // Remove the object from the grid.
-      ObjectInCol r = get(loc);
+      OccupantInCol r = get(loc);
       occupantArray[loc.getRow()].add(null, loc.getCol());
       return r;
   } 
-}
-
-public class ObjectInCol{
-    private Object occupant; 
-    private int col;
-    
-    public void ObjectInCol(Object obj, int c){
-	col=c;
-	occupant=obj;
-    }
-    
-    public Object getOccupant(){
-	return occupant;
-    }
-    public int getCols(){
-	return c;
-    }
 }
