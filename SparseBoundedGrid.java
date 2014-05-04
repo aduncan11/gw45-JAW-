@@ -1,6 +1,6 @@
+package info.gridworld.grid;
+
 import java.util.*;
-import java.io.*;
-import info.gridworld.grid.Location;
 
 public class SparseBoundedGrid{
     private LinkedList<OccupantInCol>[] occupantArray; // 
@@ -48,7 +48,7 @@ public class SparseBoundedGrid{
   {
       if (!isValid(loc))
 	  throw new IllegalArgumentException("Location " + loc + " is not valid");
-      return (E) occupantArray[loc.getRow()].get(loc.getCall); // unavoidable warning
+      return occupantArray[loc.getRow()].get(loc.getCol()); // unavoidable warning
   }
   
   public OccupantInCol put(Location loc, OccupantInCol obj)
@@ -59,8 +59,8 @@ public class SparseBoundedGrid{
 	  throw new NullPointerException("obj == null");
       // Add the object to the grid.
       OccupantInCol oldOccupant = get(loc); 
-      occupantArray[loc.getRow()].add(obj, loc.getCol()); 
-      remove(oldOccupant);
+      occupantArray[loc.getRow()].remove(loc.getCol());
+      occupantArray[loc.getRow()].add(loc.getCol(), obj); 
       return oldOccupant;
   }
   
@@ -70,7 +70,7 @@ public class SparseBoundedGrid{
 	  throw new IllegalArgumentException("Location " + loc + " is not valid");
       // Remove the object from the grid.
       OccupantInCol r = get(loc);
-      occupantArray[loc.getRow()].add(null, loc.getCol());
+      occupantArray[loc.getRow()].add(loc.getCol(), null);
       return r;
   } 
 }
